@@ -59,6 +59,8 @@ void rampDutyCicle(){
         currentDuty--;
     }
     
+    dutyCicle = ADC_GetConversion(channel_AN1);
+    EPWM2_LoadDutyValue(currentDuty);     
 }
 
 /*
@@ -78,10 +80,8 @@ int main() {
     // Enable the Peripheral Interrupts
     INTERRUPT_PeripheralInterruptEnable();
 
-    while (1)
-    {
-        dutyCicle = ADC_GetConversion(channel_AN1);
-        EPWM2_LoadDutyValue(currentDuty);    
+    while (1) {
+        
     }
     
     return 0;
