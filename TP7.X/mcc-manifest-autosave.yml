@@ -2,12 +2,12 @@
 
 manifest_file_version: 1.0.0
 project: TP7
-creation_date: 2025-10-16T11:46:46.661-03:00[America/Sao_Paulo]
-operating_system: Linux
+creation_date: 2025-10-20T10:04:54.364-03:00[America/Sao_Paulo]
+operating_system: Windows 11
 mcc_mode: IDE
 mcc_mode_version: v6.25
 device_name: PIC16F1827
-compiler: XC8 3.00
+compiler: XC8 3.10
 mcc_version: 5.5.2
 mcc_core_version: 5.7.1
 content_manager_version: 5.0.1

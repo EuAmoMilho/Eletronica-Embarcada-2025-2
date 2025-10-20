@@ -58,8 +58,8 @@
 void CMP1_Initialize(void)
 {
 
-	// C1HYS disabled; C1SP hi_speed; C1ON enabled; C1POL not inverted; C1OE COUT_pin; C1SYNC synchronous;                          
-    CM1CON0 = 0xA5;
+	// C1HYS disabled; C1SP hi_speed; C1ON enabled; C1POL not inverted; C1OE COUT_internal; C1SYNC synchronous;                          
+    CM1CON0 = 0x85;
 	
 	// C1INTN no_intFlag; C1INTP no_intFlag; C1PCH FVR; C1NCH CIN1-;                          
     CM1CON1 = 0x21;

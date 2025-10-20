@@ -52,7 +52,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="CMP1" name="COMPPIN"/>
-         <value>enabled</value>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="CMP1" name="cmpIntermodule"/>
@@ -176,7 +176,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="CMP1" registerAlias="CMCON0"/>
-         <value>165</value>
+         <value>133</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="CMP1" registerAlias="CMCON1"/>
@@ -200,7 +200,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="CMP1" registerAlias="CMCON0" settingAlias="COE"/>
-         <value>COUT_pin</value>
+         <value>COUT_internal</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="CMP1" registerAlias="CMCON0" settingAlias="CON"/>
@@ -640,7 +640,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FVR" name="adfvrVoltage"/>
-         <value></value>
+         <value/>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="FVR" name="cdafvrVoltage"/>
@@ -2148,7 +2148,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="TRISA"/>
-         <value>119</value>
+         <value>127</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="TRISB"/>
@@ -2432,7 +2432,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="TRISA" settingAlias="TRISA3"/>
-         <value>output</value>
+         <value>input</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="TRISA" settingAlias="TRISA4"/>
@@ -3161,59 +3161,59 @@
          <hash>d4e8bcbcb679cb955632857da55ad0b3066ef3bbbe4442d3a9a3b768ccea7ca7</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/cmp1.c</file>
-         <hash>913cf7b452688c20bc4733724f0085eafa90a95f2917486abbb9bf7d02b65c9a</hash>
+         <file>mcc_generated_files\cmp1.c</file>
+         <hash>5d415552ea8bbb2feba3e2b857689d862157f0ec9914869c44a33ccf0279fa4d</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/cmp1.h</file>
+         <file>mcc_generated_files\cmp1.h</file>
          <hash>47211e7066962211ec3aaec887c52be7d5355daa3afd48df167eb4bcfcc6d982</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/device_config.c</file>
+         <file>mcc_generated_files\device_config.c</file>
          <hash>42f5de9d140a2b1a569f5b4d8b040d709a1f9df6a0d06374bfe0155fe86af9de</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/device_config.h</file>
+         <file>mcc_generated_files\device_config.h</file>
          <hash>a2e25e0b40a43b27ae2dc1801d535c733be0cd471bcc40fa46b38f372ff0abed</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/eccp1.c</file>
+         <file>mcc_generated_files\eccp1.c</file>
          <hash>c26fdcb605840a110252839ce679c9c38e6387087b6902bd15fe59160fe5607f</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/eccp1.h</file>
+         <file>mcc_generated_files\eccp1.h</file>
          <hash>95666212ba2a41025baccf4077c31c4790b628384dbc761b2a66e862275c6c03</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/fvr.c</file>
+         <file>mcc_generated_files\fvr.c</file>
          <hash>18acfe3f0f064efd096ef61515280784ea70f7eabe9b60b25f0feffeef3fca59</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/fvr.h</file>
+         <file>mcc_generated_files\fvr.h</file>
          <hash>c70fa7a3d9be8abad80fad4f2322aeb87acf27091b9e5340243b6ea63f0fe4a6</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/mcc.c</file>
+         <file>mcc_generated_files\mcc.c</file>
          <hash>723a187422340a5636c7953239ee0afe9fa9d42e2b5ce1bec38e3487e79a67b3</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/mcc.h</file>
+         <file>mcc_generated_files\mcc.h</file>
          <hash>b3cdde79438c0c5bd9d74b9500d0660c9a39b653fd3b02b43550a8c6f82493e7</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/pin_manager.c</file>
-         <hash>df5b18ac2168f96dde3473970bc2de7aaf21a4cc7487bae9a4564be6d8f18d96</hash>
+         <file>mcc_generated_files\pin_manager.c</file>
+         <hash>dd6c1b3f0550727be754a29184ac452d9bd2a3c44b7930faa6c47aef4ade4519</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/pin_manager.h</file>
-         <hash>bc1f852c31a55ac2ef2058225530ad36685ceebccae534a09dd0a9a1aae7fb56</hash>
+         <file>mcc_generated_files\pin_manager.h</file>
+         <hash>f153295e74b2e8091412c60857282887101addfc71a0de0e0d77e2056fa8defa</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/tmr1.c</file>
+         <file>mcc_generated_files\tmr1.c</file>
          <hash>827c00af02bf79602dbe808e28c8b6363d01585d3dde54dd31e94ed272f43c91</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files/tmr1.h</file>
+         <file>mcc_generated_files\tmr1.h</file>
          <hash>08c5111c86c250253760dae659a15b673289ec51d1e8987677683e76f0323908</hash>
       </entry>
    </generatedFileHashHistoryMap>

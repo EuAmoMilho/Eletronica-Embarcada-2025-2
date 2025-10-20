@@ -75,16 +75,6 @@
 #define RA1_SetAnalogMode()         do { ANSELAbits.ANSA1 = 1; } while(0)
 #define RA1_SetDigitalMode()        do { ANSELAbits.ANSA1 = 0; } while(0)
 
-// get/set RA3 procedures
-#define RA3_SetHigh()            do { LATAbits.LATA3 = 1; } while(0)
-#define RA3_SetLow()             do { LATAbits.LATA3 = 0; } while(0)
-#define RA3_Toggle()             do { LATAbits.LATA3 = ~LATAbits.LATA3; } while(0)
-#define RA3_GetValue()              PORTAbits.RA3
-#define RA3_SetDigitalInput()    do { TRISAbits.TRISA3 = 1; } while(0)
-#define RA3_SetDigitalOutput()   do { TRISAbits.TRISA3 = 0; } while(0)
-#define RA3_SetAnalogMode()         do { ANSELAbits.ANSA3 = 1; } while(0)
-#define RA3_SetDigitalMode()        do { ANSELAbits.ANSA3 = 0; } while(0)
-
 // get/set RB3 procedures
 #define RB3_SetHigh()            do { LATBbits.LATB3 = 1; } while(0)
 #define RB3_SetLow()             do { LATBbits.LATB3 = 0; } while(0)
