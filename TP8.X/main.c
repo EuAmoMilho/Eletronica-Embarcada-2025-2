@@ -61,6 +61,7 @@ char    rxBuffer[RX_COUNT_MAX];
 uint8_t rxCount = 0;
 
 void comecarAnalog(){
+    EUSART_Write(0x80);
     channel = 0;
     ADC_SelectChannel(channel_AN0);
     __delay_us(5);
@@ -87,7 +88,6 @@ void enviarDados(){
     
     eU.value = round(engineeringUnits);
     
-    EUSART_Write(0x80);
     EUSART_Write(eU.byte[1]);
     EUSART_Write(eU.byte[0]);
 }
