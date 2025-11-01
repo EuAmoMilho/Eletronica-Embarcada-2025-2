@@ -152,7 +152,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ADC" name="enableInterrupt"/>
-         <value>enabled</value>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ADC" name="samplingFrequency"/>
@@ -308,7 +308,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="ADC" registerAlias="ADCON1"/>
-         <value>144</value>
+         <value>147</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="ADC" registerAlias="ADRESH"/>
@@ -344,11 +344,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="ADC" registerAlias="ADCON1" settingAlias="ADPREF"/>
-         <value>VDD</value>
+         <value>FVR</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="ADC" registerAlias="ADI" settingAlias="enable"/>
-         <value>enabled</value>
+         <value>disabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="ADC" registerAlias="ADI" settingAlias="flag"/>
@@ -1431,7 +1431,7 @@
          <value>enabled</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="CCP2SEL%aux0"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="CCP2SEL%aux2"/>
          <value>RA7</value>
       </entry>
       <entry>
@@ -1499,7 +1499,7 @@
          <value/>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="P2BSEL%aux1"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="P2BSEL%aux3"/>
          <value>%DESELECT%</value>
       </entry>
       <entry>
@@ -1571,11 +1571,11 @@
          <value>disabled</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RXDTSEL%aux3"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RXDTSEL%aux1"/>
          <value>RB2</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="TXCKSEL%aux2"/>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="TXCKSEL%aux0"/>
          <value>RB5</value>
       </entry>
       <entry>
@@ -3810,11 +3810,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files/adc.c</file>
-         <hash>6551e3f91020d75f2e3796ed65308eec2eceeb1f896b6b2b8b7ef9a345d4c2dc</hash>
+         <hash>946eac1dbd133d97ff9e1e852e9220096ffb30a4a6f3d997dcf67ea6bbe164e6</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/adc.h</file>
-         <hash>a27418486c932f66c875ec8e58b64b6913b62d5533e3aeb407db139cdc626883</hash>
+         <hash>de8fb0d5b1b372c9489ac6069074938fc110dcd48280d8f23e1f03effdaf771e</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/device_config.c</file>
@@ -3850,7 +3850,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files/interrupt_manager.c</file>
-         <hash>0c8fb99b50cb3b1fe2cd2652884af80ceab314a218704690a44155d3e8a5577a</hash>
+         <hash>949223363328b9b7ddc84d136cae843ef370626dd8433859d187132667bddce7</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/interrupt_manager.h</file>

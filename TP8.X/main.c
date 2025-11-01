@@ -41,8 +41,12 @@
     SOFTWARE.
 */
 
+
+// CÓDIGO CORRIGIDO PELO PROFESSOR (31/10/2025)
+
 #include "mcc_generated_files/mcc.h"
 #include <math.h>
+#include <pic16f1827.h>
 
 uint8_t channel = 0;
 
@@ -60,106 +64,87 @@ union{
 char    rxBuffer[RX_COUNT_MAX];
 uint8_t rxCount = 0;
 
-void comecarAnalog(){
-    EUSART_Write(0x80);
-    channel = 0;
-    ADC_SelectChannel(channel_AN0);
-    __delay_us(5);
-    ADC_StartConversion();
-    
-    channel = 1;
-    ADC_SelectChannel(channel_AN1);
-    __delay_us(5);
-    ADC_StartConversion();
-}
-
 void enviarDados(){
     float engineeringUnits;
     union{
         uint16_t    value;
         uint8_t     byte[2];
-    }eU;
+    }eU[2];
     
-    if(channel == 0){
-        engineeringUnits = ADC_GetConversionResult()*(float)gainT.value/1000;
-    }else if(channel == 1){
-        engineeringUnits = ADC_GetConversionResult()*(float)gainL.value/1000;
-    }
+    FVRCON = 0b10000100;
+    __delay_us(10);
+    engineeringUnits = (float)ADC_GetConversion(channel_AN0)*((float)gainT.value)/1000;
+    eU[0].value = round(engineeringUnits);
     
-    eU.value = round(engineeringUnits);
+    FVRCON = 0b10001100;
+    __delay_us(10);
+    engineeringUnits = (float)ADC_GetConversion(channel_AN1)*((float)gainL.value)/1000;
+    eU[1].value = round(engineeringUnits);//fazer for p reduzir codigo
     
-    EUSART_Write(eU.byte[1]);
-    EUSART_Write(eU.byte[0]);
+    EUSART_Write(0x80);
+    EUSART_Write(eU[0].byte[1]);
+    EUSART_Write(eU[0].byte[0]);
+    EUSART_Write(eU[1].byte[1]);
+    EUSART_Write(eU[1].byte[0]);
+}
+
+uint16_t removeZeros(uint16_t entrada){
+    uint16_t copia = entrada & 0b0000000001111111;
+    return (((entrada>>1) & 0b0011111110000000) | copia);
+   
+}
+
+uint16_t bigToLittle(uint16_t entrada){
+    union{
+        uint16_t full;
+        uint8_t byte[2];
+    }value;
+    value.full = entrada;
+    uint8_t temp = value.byte[1];
+    value.byte[1] = value.byte[0];
+    value.byte[0] = temp;
+    
+    return value.full;
 }
 
 void decodeMsg(){
-    switch(rxBuffer[0]){
+        union{
+            uint16_t full;
+            uint8_t byte[2];
+        }value;
+                
+        value.byte[0] = rxBuffer[1];
+        value.byte[1] = rxBuffer[2];
+    
+        switch(rxBuffer[0]){
         case 0x80://toggle info display
             if(rxBuffer[2] == 0x00){
-                PIR1bits.TMR1IF = 1;//ao habilitar ou desabilitar a
-                                    //flag de interrupcao, controlamos
-                                    //o atendimento das interrupcoes
+                TMR1_StopTimer();
             }else if(rxBuffer[2] == 0x01){
-                PIR1bits.TMR1IF = 0;
+                TMR1_StartTimer();
             }
-            
             break;
         
         case 0x81://duty cycle
-            union{
-                uint16_t fullDuty;
-                uint8_t byteDuty[1];
-            }dutyValue;
             
-            //ESTRUTURA QUE REMOVE OS ZEROS DOS BIT[7]. EXEMPLO: 
-            //1101111111(37F) = 111111111(1FF)
-            if(dutyValue.byteDuty[1]>0 && dutyValue.byteDuty[1]%2 == 0){
-                dutyValue.byteDuty[0] = rxBuffer[1] >> 1;
-                dutyValue.byteDuty[1] = rxBuffer[2];
-                
-            }else if(dutyValue.byteDuty[1]>0 && dutyValue.byteDuty[1]%2 == 1){
-                dutyValue.byteDuty[0] = rxBuffer[1] >> 1;
-                dutyValue.byteDuty[1] = 0x80 + rxBuffer[2];
-            
-            }else{
-                dutyValue.byteDuty[0] = rxBuffer[1];
-                dutyValue.byteDuty[1] = rxBuffer[2];
-            }
-            
-            if(dutyValue.fullDuty <= 1023){
-                EPWM2_LoadDutyValue(dutyValue.fullDuty);
-            }
+            value.full = removeZeros(value.full);
+            EPWM2_LoadDutyValue(bigToLittle(value.full));
             
             break;
         
         case 0x82://temp gain
-            if(gainT.byte[1]>0 && gainT.byte[1]%2 == 0){
-                gainT.byte[0] = rxBuffer[1] >> 1;
-                gainT.byte[1] = rxBuffer[2];
-                
-            }else if(gainT.byte[1]>0 && gainT.byte[1]%2 == 1){
-                gainT.byte[0] = rxBuffer[1] >> 1;
-                gainT.byte[1] = 0x80 + rxBuffer[2];
             
-            }else{
-                gainT.byte[0] = rxBuffer[1];
-                gainT.byte[1] = rxBuffer[2];
-            }
+            value.full = removeZeros(value.full);
+            gainT.value = bigToLittle(value.full);
+            
             break;
             
         case 0x83://lum gain
-            if(gainL.byte[1]>0 && gainL.byte[1]%2 == 0){
-                gainL.byte[0] = rxBuffer[1] >> 1;
-                gainL.byte[1] = rxBuffer[2];
-                
-            }else if(gainL.byte[1]>0 && gainL.byte[1]%2 == 1){
-                gainL.byte[0] = rxBuffer[1] >> 1;
-                gainL.byte[1] = 0x80 + rxBuffer[2];
+
             
-            }else{
-                gainL.byte[0] = rxBuffer[1];
-                gainL.byte[1] = rxBuffer[2];
-            }
+            value.full = removeZeros(value.full);
+            gainL.value = bigToLittle(value.full);
+            
             break;
     }
 }
@@ -170,8 +155,7 @@ void decodeMsg(){
 int main(){
     // initialize the device
     SYSTEM_Initialize();
-    TMR1_SetInterruptHandler(comecarAnalog);
-    ADC_SetInterruptHandler(enviarDados);
+    TMR1_SetInterruptHandler(enviarDados);
         
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
@@ -184,13 +168,13 @@ int main(){
     {
         if(EUSART_is_rx_ready()){
             uint8_t dados = EUSART_Read();
-            if(dados >= 0x80 || rxCount > RX_COUNT_MAX-1){
+            if(dados & 0x80){
                 rxCount = 0;
             }
             else if(rxCount > 2){
                 decodeMsg();
             }
-            else{
+            else if(rxCount < RX_COUNT_MAX){
                 rxBuffer[rxCount] = dados;
                 rxCount++;
             }   
